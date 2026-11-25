@@ -333,6 +333,10 @@ const main = async () => {
     tokenSource = 'env';
   }
 
+  if (!tokenSource && (parsedArgs.flags['--api'] || config.api || apiUrl) !== 'https://api.vercel.com') {
+    output.error('IrnBru credentials require https://api.vercel.com');
+    return 1;
+  }
   let authConfig: AuthConfig;
   if (tokenSource) {
     authConfig = getDefaultAuthConfig();

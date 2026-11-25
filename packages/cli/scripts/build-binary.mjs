@@ -101,6 +101,8 @@ const STATIC_CHECK_IGNORE = new Set([]);
 
 await verifyExternalImportsAreStaged();
 
+if (process.argv.includes("--stage-only")) process.exit(0);
+
 const args = normalizeOutputArgs(process.argv.slice(2));
 const customNodeRuntimeEnv = await seedCustomNodeRuntime(args);
 const child = spawn(
