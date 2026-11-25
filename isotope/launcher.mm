@@ -83,7 +83,7 @@ int main(int argc, char **argv) {
         args.push_back(nullptr);
         NSString *home = NSHomeDirectory();
         NSString *homeEnv = [@"HOME=" stringByAppendingString:home];
-        std::vector<const char *> env = {"PATH=/usr/bin:/bin:/usr/sbin:/sbin", "LANG=en_US.UTF-8", homeEnv.fileSystemRepresentation};
+        std::vector<const char *> env = {"PATH=/usr/bin:/bin:/usr/sbin:/sbin", "LANG=en_US.UTF-8", "NO_UPDATE_NOTIFIER=1", homeEnv.fileSystemRepresentation};
         if (const char *value = getenv("VERCEL_TOKEN")) env.push_back([[NSString stringWithFormat:@"VERCEL_TOKEN=%s", value] UTF8String]);
 
         env.push_back(nullptr);
